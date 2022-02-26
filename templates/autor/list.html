@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+
+{% block header %}
+    {% include 'includes/header.html' %}
+{% endblock header %}
+    
+
+{% block titulo %}
+    Lista de Autores
+{% endblock titulo %}
+    
+
+{% block contenido %}
+    <h2>Lista de Autores</h2>
+    <table style="border-style: solid;">
+        <thead>
+            <tr>
+                <th>Nombre Completo</th>
+                <th>Edad</th>
+                <th>País</th>
+                <th>Profesión</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for autor in contexto_autor %}
+            <tr>
+                <td>{{ autor.full_name }}</td>
+                <td>{{ autor.get_edad }}</td>
+                <td>{{ autor.get_Pais_display }}</td>
+                <td>{{ autor.get_Profesion_display }}</td>
+                <td>
+                    <a href="{% url 'autor_app:detalle' autor.id %}">Detalle</a>
+                    <a href="{% url 'autor_app:actualizar' autor.id %}">Actualizar</a>
+                    <a href="{% url 'autor_app:eliminar' autor.id %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+
+            </tr>
+        </tfoot>
+    </table>
+        
+    <a href="{% url 'autor_app:agregar' %}">Agregar Nuevo Autor</a>
+{% endblock contenido %}
+    

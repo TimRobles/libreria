@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Detalle de Editorial
+{% endblock titulo %}
+    
+
+{% block contenido %}
+    <h2>Detalle de editorial</h2>
+    <p>Razón Social: {{ contexto_editorial.RazonSocial }}</p>
+    <p>RUC: {{ contexto_editorial.Ruc }}</p>
+    <p>Dirección: {{ contexto_editorial.Direccion }}</p>
+{% endblock contenido %}

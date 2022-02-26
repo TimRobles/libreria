@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Eliminar Libro
+{% endblock titulo %}
+    
+
+{% block contenido %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Está seguro de eliminar el registro</p>
+        <p><strong>{{ contexto_libro }}</strong></p>
+        <input type="submit" value="Enviar">
+        <a href="{% url 'libro_app:lista' %}">Regresar</a>
+    </form>
+{% endblock contenido %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block header %}
+    {% include 'includes/header.html' %}
+{% endblock header %}
+    
+
+{% block titulo %}
+    Lista de Editoriales
+{% endblock titulo %}
+    
+
+{% block contenido %}
+    <ul>
+        {% for editorial in contexto_editorial %}
+        <li>{{ editorial }}
+            - {{ editorial.Ruc }}
+            - {{ editorial.Direccion }}
+            |
+            <a href="{% url 'editorial_app:detalle' editorial.id %}">Detalle</a>
+            <a href="{% url 'editorial_app:actualizar' editorial.id %}">Actualizar</a>
+            <a href="{% url 'editorial_app:eliminar' editorial.id %}">Eliminar</a>
+        </li>
+        {% endfor %}
+    </ul>
+        
+    <a href="{% url 'editorial_app:agregar' %}">Agregar Nueva Editorial</a>
+{% endblock contenido %}
+    

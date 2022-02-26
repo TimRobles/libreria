@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+{% block header %}
+    {% include 'includes/header.html' %}
+{% endblock header %}
+    
+
+{% block titulo %}
+    Lista de Libros
+{% endblock titulo %}
+    
+
+{% block contenido %}
+    <h2>Lista de Libros</h2>
+    <table style="border-style: solid;">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Año</th>
+                <th>Páginas</th>
+                <th>Editorial</th>
+                <th>Autores</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for libro in contexto_libro %}
+            <tr>
+                <td>{{ libro.Titulo }}</td>
+                <td>{{ libro.Year }}</td>
+                <td>{{ libro.Paginas }}</td>
+                <td>{{ libro.Editorial }}</td>
+                <td>
+                    <ol>
+                        {% for autor in libro.Autor.all %}
+                            <li>{{ autor.full_name }}</li>
+                        {% endfor %}    
+                    </ol>
+                </td>
+                <td>
+                    <a href="{% url 'libro_app:detalle' libro.id %}">Detalle</a>
+                    <a href="{% url 'libro_app:actualizar' libro.id %}">Actualizar</a>
+                    <a href="{% url 'libro_app:eliminar' libro.id %}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+
+            </tr>
+        </tfoot>
+    </table>
+        
+    <a href="{% url 'libro_app:agregar' %}">Agregar Nuevo libro</a>
+{% endblock contenido %}
+    

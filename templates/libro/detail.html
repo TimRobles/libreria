@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Detalle de Libro
+{% endblock titulo %}
+    
+
+{% block contenido %}
+    <h2>Detalle de Libro</h2>
+    <p>Título: {{ contexto_libro.Titulo }}</p>
+    <p>Year: {{ contexto_libro.Year }}</p>
+    <p>Páginas: {{ contexto_libro.Paginas }}</p>
+    <p>Editorial: {{ contexto_libro.Editorial }}</p>
+    <p>Autores:
+        <ol>
+            {% for autor in contexto_libro.Autor.all %}
+                <li>{{ autor.full_name }}</li>
+            {% endfor %}    
+        </ol>    
+    </p>
+    {% if contexto_libro.Portada %}
+    <p>
+        <img src="{{ MEDIA_URL }}{{ contexto_libro.Portada }}" alt="">
+    </p>
+    {% endif %}
+    <a href="{% url 'libro_app:lista' %}">Regresar</a>
+{% endblock contenido %}

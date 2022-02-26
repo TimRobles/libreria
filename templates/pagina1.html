@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Página 1
+{% endblock titulo %}
+
+{% block header %}
+    {% include 'includes/header.html' %}
+{% endblock header %}
+
+{% block contenido %}
+    <h2>Estás en la primera página</h2>
+    <a href="{% url 'editorial_app:segunda-pagina' %}">Link para la segunda página</a>
+{% endblock contenido %}
+    

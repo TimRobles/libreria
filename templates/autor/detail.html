@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Detalle de Autor
+{% endblock titulo %}
+    
+
+{% block contenido %}
+    <h2>Detalle de autor</h2>
+    <p>Nombre: {{ contexto_autor.Nombre }}</p>
+    <p>Apellido: {{ contexto_autor.Apellido }}</p>
+    <p>Edad: {{ contexto_autor.get_edad }}</p>
+    <p>País: {{ contexto_autor.get_Pais_display }}</p>
+    <p>Profesión: {{ contexto_autor.get_Profesion_display }}</p>
+    {% if contexto_autor.Curriculum %}
+    <p>
+        <a href="{{ MEDIA_URL }}{{ contexto_autor.Curriculum }}" target="_blank">Curriculum</a>
+    </p>
+    {% endif %}
+    
+    {% if contexto_autor.Foto %}
+    <p>
+        <img src="{{ MEDIA_URL }}{{ contexto_autor.Foto }}" alt="">
+    </p>
+    {% endif %}
+    <a href="{% url 'autor_app:lista' %}">Regresar</a>
+{% endblock contenido %}

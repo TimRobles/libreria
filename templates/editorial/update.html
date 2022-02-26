@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Actualizar Editorial
+{% endblock titulo %}
+    
+
+{% block contenido %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Enviar">
+        <a href="{% url 'editorial_app:lista' %}">Regresar</a>
+    </form>
+{% endblock contenido %}
+    
